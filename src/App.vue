@@ -6,7 +6,7 @@
       <router-link to="/items">Items</router-link>
     </div>-->
     <header>
-      <img class="title_img" src="/img/title.png" alt="title">
+      <img class="title_img" src="./assets/title.png" alt="title">
 
       <div class="seach">
         <form id="form1" action="自分のサイトURL">
@@ -30,7 +30,7 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
+/* #nav {
   padding: 30px;
 }
 
@@ -41,7 +41,7 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 
 * {
   margin: 0;
@@ -63,6 +63,16 @@ button {
 input {
   border: solid 1px #e7e7e7;
   background: none;
+  width: 100%;
+  height: 100%; /*検索ボックスの高さ*/
+  padding: 0 10px; /*テキスト位置調整*/
+  border-radius: 0; /*検索ボックスの角を丸める*/
+  background: #efefef; /*検索ボックスの背景カラー*/
+  border-radius: 6px;
+  outline: 0; /*クリック時の青い枠線消す*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
@@ -121,19 +131,5 @@ header {
 #form1 {
   position: relative; /*フォームの相対位置*/
   max-width: 100%; /*フォームのサイズ*/
-}
-
-/*検索ボックス*/
-#sbox {
-  width: 100%;
-  height: 100%; /*検索ボックスの高さ*/
-  padding: 0 10px; /*テキスト位置調整*/
-  border-radius: 0; /*検索ボックスの角を丸める*/
-  background: #efefef; /*検索ボックスの背景カラー*/
-  border-radius: 6px;
-  outline: 0; /*クリック時の青い枠線消す*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
