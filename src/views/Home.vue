@@ -20,6 +20,7 @@
 import axios from "axios";
 
 export default {
+  template: ".container",
   data() {
     return {
       grid: null
@@ -72,7 +73,6 @@ export default {
   grid-row: 1/2;
   max-width: 100%;
   max-height: 100%;
-  font-size: 1px;
   display: block;
   margin: 10px 0;
   padding: 5px;
@@ -81,6 +81,15 @@ export default {
 
 .brand_icon {
   grid-column: 12/13;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  height: 30px;
+}
+
+.image_icon {
+  height: 30px;
+  width: 30px;
 }
 
 .modal {
