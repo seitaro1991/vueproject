@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="grid">
-      <div v-for="grid_item in grid" class="grid_item">
-        <img class="image_area" v-bind:src="album.thumbnailUrl" alt="image">
+      <div v-for="grid_item for grid" class="grid_item">
+        <img class="image_area" v-bind:src="grid_item.thumbnailUrl" alt="image">
         <div class="text_area">
           <div class="detail">
             <p>テキストテキストテキストテキストテキストテキスト</p>
@@ -16,8 +16,9 @@
 
 <script>
 import axios from "axios";
-var app = new Vue({
-  el: ".container",
+
+export default {
+  template: ".container",
   data() {
     return {
       grid: null
@@ -28,7 +29,7 @@ var app = new Vue({
       .get("https://jsonplaceholder.typicode.com/photos")
       .then(response => (this.grid = response.data));
   }
-});
+};
 </script>
 
 <style>
