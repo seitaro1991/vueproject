@@ -7,13 +7,7 @@
     </div>-->
     <header>
       <img class="title_img" src="./assets/title.png" alt="title">
-
-      <div class="seach">
-        <form id="form1" action="自分のサイトURL">
-          <input id="s" name="s" type="text" placeholder="seach...">
-        </form>
-      </div>
-
+      
       <i class="fas fa-book-open story_img"></i>
       <i class="fas fa-tshirt wear_img"></i>
       <i class="fas fa-sign-in-alt login_img"></i>
@@ -21,6 +15,10 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+</script>
+
 
 <style>
 #app {
@@ -30,18 +28,6 @@
   text-align: center;
   color: #2c3e50;
 }
-/* #nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-} */
 
 * {
   margin: 0;
@@ -91,45 +77,33 @@ header {
 }
 
 .title_img {
-  grid-column: 1/4;
+  grid-column: 1/5;
   grid-row: 1/2;
   max-width: 100%;
   max-height: 100%;
 }
 
 .story_img {
-  grid-column: 10/11;
+  grid-column: 8/9;
   grid-row: 1/2;
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
 }
 
 .wear_img {
-  grid-column: 11/12;
+  grid-column: 10/11;
   grid-row: 1/2;
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
 }
 
 .login_img {
   grid-column: 12/13;
   grid-row: 1/2;
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
-}
-
-.seach {
-  margin: 0 auto;
-  grid-column: 4/9;
-  grid-row: 1/2;
-}
-
-/*フォーム全体*/
-#form1 {
-  position: relative; /*フォームの相対位置*/
-  max-width: 100%; /*フォームのサイズ*/
 }
 </style>
