@@ -1,13 +1,15 @@
 <template>
   <div class="container">
     <div class="grid">
-      <div v-for="grid_item for grid" class="grid_item">
-        <img class="image_area" v-bind:src="grid_item.thumbnailUrl" alt="image">
+      <div v-for="grid_item in grid" class="grid_item">
+        <img class="image_area" v-bind:src="grid_item.url" alt="image">
         <div class="text_area">
           <div class="detail">
-            <p>テキストテキストテキストテキストテキストテキスト</p>
+            <p>{{ grid_item.title }}</p>
           </div>
-          <div class="brand_icon"></div>
+          <div class="brand_icon">
+            <img class="image_icon" v-bind:src="grid_item.thumbnailUrl" alt="image_icon">
+          </div>
         </div>
       </div>
     </div>
@@ -18,7 +20,6 @@
 import axios from "axios";
 
 export default {
-  template: ".container",
   data() {
     return {
       grid: null
@@ -80,9 +81,6 @@ export default {
 
 .brand_icon {
   grid-column: 12/13;
-  background-color: aqua;
-  height: 80%;
-  width: 100%;
 }
 
 .modal {
