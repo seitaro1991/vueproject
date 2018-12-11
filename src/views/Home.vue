@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <!-- <div class="modal" :class="{ hide: isHide }" v-on:click="hide">
+      <img :src="modal_img">
+    </div>-->
     <div class="grid">
       <div v-for="grid_item in grid" class="grid_item">
         <img class="image_area" v-bind:src="grid_item.url" alt="image">
@@ -32,6 +35,8 @@ export default {
       .then(response => (this.grid = response.data));
   }
 };
+
+// ここに追加したい
 </script>
 
 <style>
