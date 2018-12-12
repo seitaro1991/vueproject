@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <!-- <div class="modal" :class="{ hide: isHide }" v-on:click="hide">
+    <div class="modal" :class="{ hide: isHide }" v-on:click="hide">
       <img :src="modal_img">
-    </div>-->
+    </div>
     <div class="grid">
       <div v-for="grid_item in grid" class="grid_item">
         <img class="image_area" v-bind:src="grid_item.url" alt="image">
@@ -33,10 +33,31 @@ export default {
     axios
       .get("https://jsonplaceholder.typicode.com/photos")
       .then(response => (this.grid = response.data));
+  },
+  template: ".grid",
+  data: {
+    modal_img: ""
+  },
+  methods: {
+    greet: function(event) {
+      modal.modal_img = event.target.src;
+      modal.show();
+    }
+  },
+  template: ".modal",
+  data: {
+    modal_img: "",
+    isHide: true
+  },
+  methods: {
+    hide: function(event) {
+      this.isHide = true;
+    },
+    show: function(event) {
+      this.isHide = false;
+    }
   }
 };
-
-// ここに追加したい
 </script>
 
 <style>
