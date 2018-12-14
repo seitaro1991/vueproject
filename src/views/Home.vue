@@ -1,53 +1,42 @@
 <template>
   <div class="container">
-    <div class="modal" :class="{ hide: isHide }" v-on:click="hide">
+    <div class="modal" :class="{ hide: isHide }" v-on:click="hide()">
       <img :src="modal_img">
     </div>
     <div class="grid">
-      <div v-for="grid_item in grid" class="grid_item">
-        <img class="image_area" v-bind:src="grid_item.url" alt="image">
-        <div class="text_area">
+      <div v-for="grid_item in grid" class="grid_item" :key="grid_item.id">
+        <img class="image_area" v-bind:src="grid_item.url" v-on:click="show($event)" alt="image">
+        <GridItem v-bind:title="grid_item.title" v-bind:thumbnail="grid_item.thumbnailUrl"></GridItem>
+        <!-- 
+          ↑以下の内容がGridItemに入っている
+          <div class="text_area">
           <div class="detail">
             <p>{{ grid_item.title }}</p>
           </div>
           <div class="brand_icon">
             <img class="image_icon" v-bind:src="grid_item.thumbnailUrl" alt="image_icon">
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import axios from "axios";
+import GridItem from "@/components/GridItem";
 
 export default {
-  template: ".container",
+  // name: "container",
+  // template: ".container",
+  components: { GridItem },
   data() {
     return {
-      grid: null
+      grid: null,
+      modal_img: "",
+      isHide: true
     };
-  },
-  mounted() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos")
-      .then(response => (this.grid = response.data));
-  },
-  template: ".grid",
-  data: {
-    modal_img: ""
-  },
-  methods: {
-    greet: function(event) {
-      modal.modal_img = event.target.src;
-      modal.show();
-    }
-  },
-  template: ".modal",
-  data: {
-    modal_img: "",
-    isHide: true
   },
   methods: {
     hide: function(event) {
@@ -55,10 +44,18 @@ export default {
     },
     show: function(event) {
       this.isHide = false;
+      this.modal_img = event.target.src;
     }
+  },
+  mounted() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/photos")
+      .then(response => (this.grid = response.data));
   }
 };
 </script>
+
+
 
 <style>
 .grid {
@@ -121,7 +118,7 @@ export default {
 .modal {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
