@@ -1,22 +1,28 @@
 <template>
   <div class="container">
     <div class="modal" :class="{ hide: isHide }" v-on:click="hide()">
+      <h3></h3>
       <img :src="modal_img">
     </div>
     <div class="grid">
-      <div v-for="grid_item in grid" class="grid_item" :key="grid_item.id">
-        <img class="image_area" v-bind:src="grid_item.url" v-on:click="show($event)" alt="image">
-        <GridItem v-bind:title="grid_item.title" v-bind:thumbnail="grid_item.thumbnailUrl"></GridItem>
-        <!-- 
-          ↑以下の内容がGridItemに入っている
-          <div class="text_area">
+      <div
+        v-for="grid_item in grid"
+        class="grid_item"
+        :key="grid_item.id"
+        v-on:click="show($event)"
+      >
+        <img class="image_area" :src="grid_item.url" alt="image">
+        <!-- <GridItem v-bind:title="grid_item.title" v-bind:thumbnail="grid_item.thumbnailUrl"></GridItem> -->
+        <!-- ↓GridItemに以下の内容が入っている -->
+        <div class="text_area">
           <div class="detail">
+            <h3>{{ grid_item.title }}</h3>
             <p>{{ grid_item.title }}</p>
           </div>
           <div class="brand_icon">
             <img class="image_icon" v-bind:src="grid_item.thumbnailUrl" alt="image_icon">
           </div>
-        </div>-->
+        </div>
       </div>
     </div>
   </div>
@@ -25,12 +31,12 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
-import GridItem from "@/components/GridItem";
+// import GridItem from "@/components/GridItem";
 
 export default {
   // name: "container",
   // template: ".container",
-  components: { GridItem },
+  // components: { GridItem },
   data() {
     return {
       grid: null,
@@ -80,7 +86,7 @@ export default {
   max-width: 100%;
   margin: 0 auto;
   width: 100%;
-  height: 400px;
+  height: 350px;
   object-fit: cover;
 }
 
@@ -97,9 +103,13 @@ export default {
   max-width: 100%;
   max-height: 100%;
   display: block;
-  margin: 10px 0;
+  margin: 0;
   padding: 5px;
   text-align: left;
+}
+
+.detail h3 {
+  margin-bottom: 10px;
 }
 
 .brand_icon {
@@ -107,12 +117,15 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 5px;
-  height: 30px;
 }
 
 .image_icon {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
+}
+
+.imge_icon {
+  margin: 0 auto;
 }
 
 .modal {
@@ -128,7 +141,7 @@ export default {
 
 .modal img {
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .modal.hide {
