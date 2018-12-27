@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import axios from "axios";
 // import GridItem from "@/components/GridItem";
 
@@ -54,16 +53,13 @@ export default {
     }
   },
   mounted() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos")
-      .then(response => (this.grid = response.data));
+    axios.get("/api/photo.json").then(response => (this.grid = response.data));
   }
 };
 </script>
 
 
-
-<style>
+<style scoped>
 .grid {
   padding-top: 50px;
   display: grid;

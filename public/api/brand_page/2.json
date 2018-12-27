@@ -1,0 +1,26 @@
+[
+    {
+        "brand_official": "GS株式会社",
+        "brand_name": "GS",
+        "brand_url": "//gs.com",
+        "brand_caption": "GSのサイトです。GSのサイトです。GSのサイトです。GSのサイトです。GSのサイトです。GSのサイトです。GSのサイトです。GSのサイトです。",
+        "brand_logo": "//GS.com/thumnail.jpg",
+        "projects": [
+            {
+                "project_id": 4,
+                "project_name": "サンプルプロジェクト4",
+                "project_image_path": "//url.com"
+            },
+            {
+                "project_id": 5,
+                "project_name": "サンプルプロジェクト5",
+                "project_image_path": "//url.com"
+            },
+            {
+                "project_id": 6,
+                "project_name": "サンプルプロジェクト6",
+                "project_image_path": "//url.com"
+            }
+        ]
+    }
+]

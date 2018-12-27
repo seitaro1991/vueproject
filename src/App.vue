@@ -46,7 +46,7 @@ button {
   appearance: none;
 }
 
-input {
+input.searchBox {
   border: solid 1px #e7e7e7;
   background: none;
   width: 100%;

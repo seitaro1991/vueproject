@@ -1,0 +1,26 @@
+[
+    {
+        "brand_official": "パタゴニア株式会社",
+        "brand_name": "パタゴニア",
+        "brand_url": "//patagonia.com",
+        "brand_caption": "パタゴニアのサイトです",
+        "brand_logo": "//pagagonia.com/thumnail.jpg",
+        "projects": [
+            {
+                "project_id": 1,
+                "project_name": "サンプルプロジェクト1",
+                "project_image_path": "//url.com"
+            },
+            {
+                "project_id": 2,
+                "project_name": "サンプルプロジェクト2",
+                "project_image_path": "//url.com"
+            },
+            {
+                "project_id": 3,
+                "project_name": "サンプルプロジェクト3",
+                "project_image_path": "//url.com"
+            }
+        ]
+    }
+]
