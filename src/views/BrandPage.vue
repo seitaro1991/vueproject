@@ -2,22 +2,19 @@
   <div class="brand">
     <div class="brand_head">
       <div class="brand_name">
-        <h3>Patagonia</h3>
+        <h3>{{ brand_info.brand_official }}</h3>
       </div>
       <div class="brand_icon">
-        <img
-          src="https://cdn-ak.f.st-hatena.com/images/fotolife/S/SikisimaHisayuki/20170905/20170905123623.jpg"
-          alt="icon"
-        >
+        <img :src="brand_info.brand_logo" alt="icon">
       </div>
       <div class="brand_id">
-        <p>@patagonia.inc</p>
+        <p>@{{ brand_info.brand_name }}</p>
       </div>
       <div class="brand_url">
-        <a href="https://patagonia.com">https://patagonia.com</a>
+        <a :href="brand_info.brand_url">{{ brand_info.brand_url }}</a>
       </div>
       <div class="brand_detail">
-        <p>最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。</p>
+        <p>{{ brand_info.brand_caption }}</p>
       </div>
       <div class="btn_area">
         <a class="project_btn" href>プロジェクト作成</a>
@@ -27,44 +24,10 @@
     </div>
     <div class="project_detail">
       <div class="grid">
-        <div class="grid_item" v-on:click="greet">
-          <img
-            class="grid_image"
-            src="https://www.patagonia.jp/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw9e053212/images/content/companyInfo/1105x622_davis_t_1306.jpg"
-            alt
-          >
+        <div v-for="grid_item in brand_info.projects" class="grid_item" :key="grid_item.id">
+          <img class="grid_image" :src="grid_item.project_image_path" alt="image">
           <div class="text_area">
-            <p class="detail">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="grid_item" v-on:click="greet">
-          <img
-            class="grid_image"
-            src="https://www.patagonia.jp/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw2c59681f/images/sport-pages/f18-snow/yoder-cap-kit.jpg"
-            alt
-          >
-          <div class="text_area">
-            <p class="detail">テキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="grid_item" v-on:click="greet">
-          <img
-            class="grid_image"
-            src="https://www.ei-publishing.co.jp/wp/wp-content/uploads/2017/07/20025036/01_SAT.jpg"
-            alt
-          >
-          <div class="text_area">
-            <p class="detail">テキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="grid_item" v-on:click="greet">
-          <img
-            class="grid_image"
-            src="https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2d90660a/images/hi-res/25921_SMDB.jpg?sw=750&sh=750&sm=fit&sfrm=png"
-            alt
-          >
-          <div class="text_area">
-            <p class="detail">テキストテキストテキストテキストテキストテキスト</p>
+            <p class="detail">{{ grid_item.project_name }}</p>
           </div>
         </div>
       </div>
@@ -77,13 +40,15 @@ import axios from "axios";
 
 export default {
   data() {
-    return {};
+    return {
+      brand_info: null
+    };
   },
   methods: {},
   mounted() {
     axios
-      .get("https://jsonplaceholder.typicode.com/photos")
-      .then(response => (this.grid = response.data));
+      .get("/api/brand_page/1.json")
+      .then(response => (this.brand_info = response.data));
   }
 };
 </script>

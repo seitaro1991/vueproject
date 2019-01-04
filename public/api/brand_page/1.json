@@ -1,26 +1,29 @@
-[
-    {
-        "brand_official": "パタゴニア株式会社",
-        "brand_name": "パタゴニア",
-        "brand_url": "//patagonia.com",
-        "brand_caption": "パタゴニアのサイトです",
-        "brand_logo": "//pagagonia.com/thumnail.jpg",
-        "projects": [
-            {
-                "project_id": 1,
-                "project_name": "サンプルプロジェクト1",
-                "project_image_path": "//url.com"
-            },
-            {
-                "project_id": 2,
-                "project_name": "サンプルプロジェクト2",
-                "project_image_path": "//url.com"
-            },
-            {
-                "project_id": 3,
-                "project_name": "サンプルプロジェクト3",
-                "project_image_path": "//url.com"
-            }
-        ]
-    }
-]
+{
+    "brand_official": "Patagonia",
+    "brand_name": "patagonia.inc",
+    "brand_url": "https://patagonia.com",
+    "brand_caption": "最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。",
+    "brand_logo": "https://cdn-ak.f.st-hatena.com/images/fotolife/S/SikisimaHisayuki/20170905/20170905123623.jpg",
+    "projects": [
+        {
+            "project_id": 1,
+            "project_name": "環境に優しいフリースを作る",
+            "project_image_path": "https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2d90660a/images/hi-res/25921_SMDB.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+        },
+        {
+            "project_id": 2,
+            "project_name": "環境に優しいフリースを作る",
+            "project_image_path": "https://www.ei-publishing.co.jp/wp/wp-content/uploads/2017/07/20025036/01_SAT.jpg"
+        },
+        {
+            "project_id": 3,
+            "project_name": "工場の人たちとフェアな関係での商品づくり",
+            "project_image_path": "https://www.patagonia.jp/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw9e053212/images/content/companyInfo/1105x622_davis_t_1306.jpg"
+        },
+        {
+            "project_id": 4,
+            "project_name": "90%以上再生利用可能な素材だけで商品を作る",
+            "project_image_path": "https://www.patagonia.jp/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw2c59681f/images/sport-pages/f18-snow/yoder-cap-kit.jpg"
+        }
+    ]
+}

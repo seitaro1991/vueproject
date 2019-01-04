@@ -6,11 +6,10 @@
       <router-link to="/items">Items</router-link>
     </div>-->
     <header>
-      <img class="title_img" src="./assets/title.png" alt="title">
+      <img class="title_img" src="./assets/title.jpg" alt="title">
       
       <i class="fas fa-book-open story_img"></i>
       <i class="fas fa-tshirt wear_img"></i>
-      <i class="fas fa-sign-in-alt login_img"></i>
     </header>
     <router-view/>
   </div>
@@ -84,14 +83,11 @@ header {
 }
 
 .story_img {
-  grid-column: 8/9;
+  /* grid-column: 8/9;
   grid-row: 1/2;
   max-width: 100%;
   max-height: 100%;
-  margin: 0 auto;
-}
-
-.wear_img {
+  margin: 0 auto; */
   grid-column: 10/11;
   grid-row: 1/2;
   max-width: 100%;
@@ -99,11 +95,24 @@ header {
   margin: 0 auto;
 }
 
-.login_img {
+.wear_img {
+  /* grid-column: 10/11;
+  grid-row: 1/2;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto; */
   grid-column: 12/13;
   grid-row: 1/2;
   max-width: 100%;
   max-height: 100%;
   margin: 0 auto;
 }
+
+/* .login_img {
+  grid-column: 12/13;
+  grid-row: 1/2;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+} */
 </style>
