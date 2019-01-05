@@ -17,19 +17,26 @@
         <p>{{ brand_info.brand_caption }}</p>
       </div>
       <div class="btn_area">
-        <a class="project_btn" href>プロジェクト作成</a>
+        <a class="project_btn" href>
+          <router-link to="/projectregister">プロジェクト作成</router-link>
+        </a>
         <a class="photo_btn" href>写真を投稿</a>
-        <a class="edit_btn" href>編集</a>
+        <a class="edit_btn" href>基本情報編集</a>
       </div>
     </div>
     <div class="project_detail">
       <div class="grid">
-        <div v-for="grid_item in brand_info.projects" class="grid_item" :key="grid_item.id">
+        <router-link
+          to="/project"
+          v-for="grid_item in brand_info.projects"
+          class="grid_item"
+          :key="grid_item.id"
+        >
           <img class="grid_image" :src="grid_item.project_image_path" alt="image">
           <div class="text_area">
             <p class="detail">{{ grid_item.project_name }}</p>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>

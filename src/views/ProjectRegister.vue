@@ -3,7 +3,7 @@
     <div class="project_form_detail">
       <h2 class="title">新規プロジェクト作成</h2>
       <div>
-        <form action="post">
+        <form v-on:submit.prevent="postArticle">
           <div class="project_title">
             <div class="title">
               <label>プロジェクト名</label>
@@ -22,13 +22,15 @@
           </div>
           <div class="project_image">
             <label>プロジェクト画像をアップロード</label>
-            <img v-show="uploadedImage" :src="uploadedImage">
+            <img v-show="uploadedImage" :src="uploadedImage" accept="image/jpeg, image/png">
             <input type="file" v-on:change="onFileChange">
           </div>
           <!-- <p>{{ title }}</p>
           <p>{{ content }}</p>-->
           <div class="create_btn">
-            <button v-on:click="postArticle">新規作成</button>
+            <button type="submit">
+              <router-link to="/productregister">新規作成</router-link>
+            </button>
           </div>
         </form>
       </div>
@@ -55,14 +57,15 @@ export default {
   methods: {
     postArticle() {
       var article = {
-        title: this.title,
-        content: this.content
+        project_name: this.title,
+        project_caption: this.content
       };
       var id = 1;
-      axios.post().then(res => {
-        console.log(res.data.title);
-        console.log(res.data.content);
-      });
+      console.log(article);
+      // axios.post("/api/project" ,article).then(res => {
+      //   console.log(res.data.title);
+      //   console.log(res.data.content);
+      // });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;

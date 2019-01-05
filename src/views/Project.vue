@@ -1,9 +1,11 @@
 <template>
   <div class="project">
     <div class="project_detail">
-      <div class="brand_icon">
-        <img :src="project_info.brand_logo" alt="icon">
-      </div>
+      <router-link to="/brandpage">
+        <div class="brand_icon">
+          <img :src="project_info.brand_logo" alt="icon">
+        </div>
+      </router-link>
       <h2 class="project_title">{{ project_info.project_name }}</h2>
       <div class="project_photos_grid">
         <div v-for="grid_item in project_info.project_image" class="grid_item" :key="grid_item.id">
@@ -27,23 +29,39 @@
         <p>¥{{ project_info.product_price }}-</p>
       </div>
       <div class="product_cost">
-        <p>製造原価 ¥{{ project_info.product_cost }}-</p>
+        <p>製造原価: ¥{{ project_info.product_cost }}-</p>
+        <p>size : {{ project_info.product_size }}</p>
       </div>
       <div class="product_caption">
         <p>{{ project_info.product_caption }}</p>
       </div>
-      <div class="choice">
-        <p>商品代金の10%で</p>
-        <input type="radio" name="test" id="social" value="社会貢献団体を応援" v-model="picked">
-        <label for="support">社会貢献団体を応援</label>
+      <div class="choice_area">
+        <div class="choice" v-for="item in items" :key="item.key">
+          <!-- <p>商品代金の10%で</p> -->
+          <label>
+            <input type="radio" v-model="radio_picked" :value="item.value">
+            {{ item.label }}
+          </label>
+          <!-- <input
+          type="radio"
+          name="social"
+          id="social"
+          value="社会貢献団体を応援"
+          v-model="picked"
+          checked="checked"
+        >
+        <label for="social">社会貢献団体を応援</label>
         <br>
-        <input type="radio" name="test" id="support" value="プロジェクトを応援" v-model="picked">
+        <input type="radio" name="support" id="support" value="プロジェクトを応援" v-model="picked">
         <label for="support">このブランドを応援</label>
         <br>
-        <input type="radio" name="test" id="discount" value="商品を割引き" v-model="picked">
+        <input type="radio" name="discount" id="discount" value="商品を割引き" v-model="picked">
         <label for="discount">商品を割引き</label>
-        <br>
-        <!-- pick: {{ picked }} -->
+          <br>-->
+        </div>
+      </div>
+      <div class="answer">
+        <p>商品代金の10%→ {{ radio_picked }}</p>
       </div>
       <div class="buy_btn">
         <button>購入する</button>
@@ -70,8 +88,35 @@ export default {
     return {
       project_info: null,
       picked: "",
-      isClose: true
+      isClose: true,
+      radio_picked: null,
+      items: [
+        {
+          key: 1,
+          value: "社会貢献団体を応援",
+          label: "社会貢献団体を応援",
+          checked: true,
+          name: "social"
+        },
+        {
+          key: 2,
+          value: "プロジェクトを応援",
+          label: "プロジェクトを応援",
+          checked: false,
+          name: "support"
+        },
+        {
+          key: 3,
+          value: "割引き",
+          label: "割引き",
+          checked: false,
+          name: "discount"
+        }
+      ]
     };
+  },
+  created() {
+    this.radio_picked = this.items.find(item => item.checked).value;
   },
   methods: {
     more: function(event) {
@@ -104,9 +149,6 @@ export default {
   height: 50px;
   object-fit: cover;
   border-radius: 5px;
-}
-
-.project_detail {
 }
 
 .project_title {
@@ -228,6 +270,11 @@ export default {
   align-items: center;
 }
 
+.product_name {
+  font-size: 15px;
+  margin: 0 10%;
+}
+
 .product_picture {
   margin-top: 20px;
   font-size: 12px;
@@ -242,6 +289,7 @@ export default {
 }
 
 .product_cost {
+  margin-top: 10px;
   font-size: 15px;
 }
 
@@ -250,9 +298,18 @@ export default {
   font-size: 12px;
 }
 
+.choice_area {
+  margin-top: 20px;
+}
+
+.answer {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 .buy_btn {
   width: 80%;
-  margin: 20px auto;
+  margin: 0 auto 20px;
   font-weight: bold;
   border: 2px solid #434a54;
   border-radius: 5px;

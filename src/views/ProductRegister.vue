@@ -3,9 +3,9 @@
     <div class="product_form_detail">
       <h2 class="title">商品登録</h2>
       <div>
-        <form action="post">
-          <div class="product_name">
-            <div class="name">
+        <form v-on:submit.prevent="postArticle">
+          <div class="posted_column">
+            <div class="label">
               <label>商品名</label>
             </div>
             <div class="write">
@@ -13,8 +13,8 @@
             </div>
           </div>
 
-          <div class="product_price">
-            <div class="price">
+          <div class="posted_column">
+            <div class="label">
               <label>価格</label>
             </div>
             <div class="write">
@@ -22,8 +22,8 @@
             </div>
           </div>
 
-          <div class="product_cost">
-            <div class="cost">
+          <div class="posted_column">
+            <div class="label">
               <label>製造原価</label>
             </div>
             <div class="write">
@@ -31,8 +31,8 @@
             </div>
           </div>
 
-          <div class="product_size">
-            <div class="size">
+          <div class="posted_column">
+            <div class="label">
               <label>サイズ</label>
             </div>
             <div class="write">
@@ -40,18 +40,9 @@
             </div>
           </div>
 
-          <div class="product_stock">
-            <div class="stock">
-              <label>在庫数</label>
-            </div>
-            <div class="write">
-              <input v-model="cost" type="number" name id placeholder="30">
-            </div>
-          </div>
-
           <div class="product_image">
             <label>商品写真をアップロード</label>
-            <img v-show="uploadedImage" :src="uploadedImage">
+            <img v-show="uploadedImage" :src="uploadedImage" accept="image/jpeg, image/png">
             <input type="file" v-on:change="onFileChange">
           </div>
 
@@ -60,13 +51,15 @@
               <label>商品説明</label>
             </div>
             <div class="detail_write">
-              <textarea v-model="content" rows="10" placeholder="商品説明"></textarea>
+              <textarea v-model="caption" rows="10" placeholder="商品説明"></textarea>
             </div>
           </div>
           <!-- <p>{{ title }}</p>
           <p>{{ content }}</p>-->
           <div class="create_btn">
-            <button v-on:click="postArticle">商品を登録</button>
+            <button type="submit">
+              <router-link to="/brandpage">商品を登録</router-link>
+            </button>
           </div>
         </form>
       </div>
@@ -88,8 +81,7 @@ export default {
       price: "",
       cost: "",
       size: "",
-      stock: "",
-      content: "",
+      caption: "",
       uploadedImage: ""
     };
   },
@@ -97,18 +89,30 @@ export default {
   methods: {
     postArticle() {
       var article = {
-        title: this.name,
-        content: this.content
+        product_name: this.name,
+        product_price: this.content,
+        product_cost: this.cost,
+        product_size: this.size,
+        product_caption: this.caption
       };
       var id = 1;
-      axios.post().then(res => {
-        console.log(res.data.name);
-        console.log(res.data.price);
-        console.log(res.data.cost);
-        console.log(res.data.size);
-        console.log(res.data.stock);
-        console.log(res.data.content);
-      });
+      console.log(article);
+      //   axios
+      //     .post("/api/product")
+      //     .then(res => {
+      //       // 遷移する処理
+      //       console.log(res.data.title);
+
+      //     })
+      //     .catch(err => {});
+
+      // ブラウザ
+      //       |-----> |         | ------> |
+      //  (クリック)    ↓         (データ受信) then(res)
+
+      // サーバー                  ↑ res
+      //               | -------> |
+      //          (データ受信)     (で〜た返信)
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
@@ -140,6 +144,10 @@ export default {
 
 .product_title {
   margin: 20px 0;
+}
+
+.posted_column {
+  margin-top: 10px;
 }
 
 .write input {

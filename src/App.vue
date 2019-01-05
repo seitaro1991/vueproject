@@ -6,17 +6,19 @@
       <router-link to="/items">Items</router-link>
     </div>-->
     <header>
-      <img class="title_img" src="./assets/title.jpg" alt="title">
-      
-      <i class="fas fa-book-open story_img"></i>
-      <i class="fas fa-tshirt wear_img"></i>
+      <router-link to="/" class="title_img">
+        <img src="./assets/title.jpg" alt="title" style="height: 100%;">
+      </router-link>
     </header>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Home from "./views/Home.vue";
+export default {};
 </script>
+
 
 
 <style>
@@ -34,6 +36,11 @@
   font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3",
     "HIragino Kaku Gothic Pro W3", "HIragino Kaku Gothic Pro", Osaka,
     "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
 }
 
 button {
@@ -61,8 +68,8 @@ input.searchBox {
 }
 
 header {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(12, 1fr); */
   height: 50px;
   background-color: #fff;
   position: fixed;
@@ -76,8 +83,8 @@ header {
 }
 
 .title_img {
-  grid-column: 1/5;
-  grid-row: 1/2;
+  /* grid-column: 1/5;
+  grid-row: 1/2; */
   max-width: 100%;
   max-height: 100%;
 }

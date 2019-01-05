@@ -50,6 +50,10 @@ export default new Router({
       path: "/productregister",
       name: "productregister",
       component: ProductRegister
+    },
+    {
+      path: "*",
+      redirect: { name: "home" }
     }
   ]
 });

@@ -7,23 +7,23 @@
     "projects": [
         {
             "project_id": 1,
-            "project_name": "環境に優しいフリースを作る",
-            "project_image_path": "https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw2d90660a/images/hi-res/25921_SMDB.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+            "project_name": "環境と人に優しいデニムをつくる。",
+            "project_image_path": "https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024703/150730_ptgn_001.jpg"
         },
         {
             "project_id": 2,
-            "project_name": "環境に優しいフリースを作る",
-            "project_image_path": "https://www.ei-publishing.co.jp/wp/wp-content/uploads/2017/07/20025036/01_SAT.jpg"
+            "project_name": "環境と人に優しいデニムをつくる。",
+            "project_image_path": "https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024704/150730_ptgn_002.jpg"
         },
         {
             "project_id": 3,
-            "project_name": "工場の人たちとフェアな関係での商品づくり",
-            "project_image_path": "https://www.patagonia.jp/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw9e053212/images/content/companyInfo/1105x622_davis_t_1306.jpg"
+            "project_name": "環境と人に優しいデニムをつくる。",
+            "project_image_path": "https://image.wwdjapan.com/production/optimize?src=https://s3-ap-northeast-1.amazonaws.com/src.wwdjapan.com/admin/v2/wp-content/uploads/2016/07/07024704/150730_ptgn_003.jpg"
         },
         {
             "project_id": 4,
-            "project_name": "90%以上再生利用可能な素材だけで商品を作る",
-            "project_image_path": "https://www.patagonia.jp/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw2c59681f/images/sport-pages/f18-snow/yoder-cap-kit.jpg"
+            "project_name": "環境と人に優しいデニムをつくる。",
+            "project_image_path": "https://www.patagonia.jp/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw461f8d10/images/hi-res/56025_DDNM.jpg?sw=2000&sh=2000&sm=fit&sfrm=png"
         }
     ]
 }

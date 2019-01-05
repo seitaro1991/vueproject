@@ -1,29 +1,32 @@
 <template>
   <div class="container">
-    <div class="modal" :class="{ hide: isHide }" v-on:click="hide()">
-      <h3></h3>
+    <!-- <div class="modal" :class="{ hide: isHide }" v-on:click="hide()">
       <img :src="modal_img">
-    </div>
+      <a class="go_project_btn" href>
+        <router-link to="/project">プロジェクトへ</router-link>
+      </a>
+    </div>-->
     <div class="grid">
-      <div
-        v-for="grid_item in grid"
+      <router-link
+        to="/project"
+        v-for="grid_item in project_feeds"
         class="grid_item"
         :key="grid_item.id"
         v-on:click="show($event)"
       >
-        <img class="image_area" :src="grid_item.url" alt="image">
+        <img class="image_area" :src="grid_item.project_image_path" alt="image">
         <!-- <GridItem v-bind:title="grid_item.title" v-bind:thumbnail="grid_item.thumbnailUrl"></GridItem> -->
         <!-- ↓GridItemに以下の内容が入っている -->
         <div class="text_area">
           <div class="detail">
-            <h3>{{ grid_item.title }}</h3>
-            <p>{{ grid_item.title }}</p>
+            <h3>{{ grid_item.project_name }}</h3>
+            <p>{{ grid_item.project_image_caption }}</p>
           </div>
-          <div class="brand_icon">
-            <img class="image_icon" v-bind:src="grid_item.thumbnailUrl" alt="image_icon">
-          </div>
+          <router-link to="/brandpage" class="brand_icon">
+            <img class="image_icon" v-bind:src="grid_item.brand_logo" alt="image_icon">
+          </router-link>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -38,22 +41,24 @@ export default {
   // components: { GridItem },
   data() {
     return {
-      grid: null,
-      modal_img: "",
-      isHide: true
+      project_feeds: null
+      // modal_img: "",
+      // isHide: true
     };
   },
   methods: {
-    hide: function(event) {
-      this.isHide = true;
-    },
-    show: function(event) {
-      this.isHide = false;
-      this.modal_img = event.target.src;
-    }
+    // hide: function(event) {
+    //   this.isHide = true;
+    // },
+    // show: function(event) {
+    //   this.isHide = false;
+    //   this.modal_img = event.target.src;
+    // }
   },
   mounted() {
-    axios.get("/api/photo.json").then(response => (this.grid = response.data));
+    axios
+      .get("/api/project_feeds/index.json")
+      .then(response => (this.project_feeds = response.data));
   }
 };
 </script>
@@ -118,6 +123,7 @@ export default {
 .image_icon {
   height: 40px;
   width: 40px;
+  object-fit: cover;
 }
 
 .imge_icon {
@@ -130,14 +136,30 @@ export default {
   position: fixed;
   z-index: 100;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
 
 .modal img {
   width: 90%;
-  margin: 0 auto;
+  margin: 40px auto 0;
+}
+
+.go_project_btn {
+  font-weight: bold;
+  border: 2px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  font-size: 12px;
+  display: block;
+  margin: 5px auto;
+  padding: 5px 0;
+  cursor: pointer;
+  text-align: center;
+  color: #333;
+  grid-column: 1/2;
+  width: 50%;
+  background: #fff;
 }
 
 .modal.hide {
