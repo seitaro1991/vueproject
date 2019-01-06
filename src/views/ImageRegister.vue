@@ -1,37 +1,35 @@
 <template>
-  <div class="project_form">
-    <div class="project_form_detail">
-      <h2 class="title">新規プロジェクト作成</h2>
+  <div class="image_form">
+    <div class="image_form_detail">
+      <h2 class="title">画像投稿</h2>
       <div>
         <form v-on:submit.prevent="postArticle">
-          <div class="project_title">
-            <div class="title">
-              <label>プロジェクト名</label>
-            </div>
-            <div class="title_write">
-              <textarea v-model="title" rows="3" placeholder="タイトル"></textarea>
-            </div>
-          </div>
-          <div class="project_detail">
-            <div class="detail">
-              <label>プロジェクト詳細</label>
-            </div>
-            <div class="detail_write">
-              <textarea v-model="content" rows="20" placeholder="内容"></textarea>
-            </div>
-          </div>
           <div class="project_image">
-            <label>プロジェクト画像をアップロード</label>
+            <label>画像をアップロード</label>
             <img v-show="uploadedImage" :src="uploadedImage" accept="image/jpeg, image/png">
             <input type="file" v-on:change="onFileChange">
           </div>
 
           <div class="project_image_caption">
-            <!-- <div class="detail">
-              <label>画像キャプション入力</label>
-            </div>-->
             <div class="detail_write">
               <textarea v-model="caption" rows="5" placeholder="画像キャプションを書く"></textarea>
+            </div>
+          </div>
+
+          <div class="posted_column">
+            <div class="label">
+              <label>プロジェクトを選択</label>
+            </div>
+            <div class="cp_ipselect cp_sl01">
+              <select required>
+                <option value hidden>選択</option>
+                <option
+                  value="1"
+                >cat最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。</option>
+                <option value="2">dog</option>
+                <option value="3">rabbit</option>
+                <option value="4">squirrel</option>
+              </select>
             </div>
           </div>
 
@@ -39,7 +37,7 @@
           <p>{{ content }}</p>-->
           <div class="create_btn">
             <button type="submit">
-              <router-link to="/productregister">プロジェクト作成</router-link>
+              <router-link to="/brandpage">画像を投稿</router-link>
             </button>
           </div>
         </form>
@@ -58,8 +56,7 @@ export default {
   // メソッドで使う&テンプレート内で使う変数を定義
   data() {
     return {
-      title: "",
-      content: "",
+      caption: "",
       uploadedImage: ""
     };
   },
@@ -67,15 +64,18 @@ export default {
   methods: {
     postArticle() {
       var article = {
-        project_name: this.title,
-        project_caption: this.content
+        product_caption: this.caption
       };
       var id = 1;
       console.log(article);
-      // axios.post("/api/project" ,article).then(res => {
-      //   console.log(res.data.title);
-      //   console.log(res.data.content);
-      // });
+      //   axios
+      //     .post("/api/image_upload")
+      //     .then(res => {
+      //       // 遷移する処理
+      //       console.log(res.data.title);
+
+      //     })
+      //     .catch(err => {});
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style scoped>
-.project_form {
+.image_form {
   padding-top: 50px;
   margin: 5px;
 }
@@ -105,11 +105,15 @@ export default {
   font-size: 18px;
 }
 
-.project_title {
+.product_title {
   margin: 20px 0;
 }
 
-.title_write textarea {
+.posted_column {
+  margin-top: 20px;
+}
+
+/* .write select {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
@@ -119,11 +123,57 @@ export default {
   padding: 5px 0;
   cursor: pointer;
   color: #333;
+  margin: 0 auto;
+} */
+
+.cp_ipselect {
+  overflow: hidden;
   width: 95%;
   margin: 0 auto;
+  text-align: center;
+}
+.cp_ipselect select {
+  width: 100%;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+  display: none;
+}
+.cp_ipselect.cp_sl01 {
+  position: relative;
+  border: 2px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  background: #ffffff;
+}
+.cp_ipselect.cp_sl01::before {
+  position: absolute;
+  top: 0.8em;
+  right: 0.9em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #666666;
+  pointer-events: none;
+}
+.cp_ipselect.cp_sl01 select {
+  padding: 8px 38px 8px 8px;
+  color: #666666;
+  font-weight: bold;
 }
 
-.project_detail {
+.product_detail {
   margin: 20px 0;
 }
 
@@ -182,5 +232,9 @@ export default {
   width: 90%;
   margin: 20px auto;
   background: rgb(201, 201, 201);
+}
+
+.create_btn button {
+  font-weight: bold;
 }
 </style>

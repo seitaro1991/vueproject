@@ -90,7 +90,7 @@ export default {
     postArticle() {
       var article = {
         product_name: this.name,
-        product_price: this.content,
+        product_price: this.price,
         product_cost: this.cost,
         product_size: this.size,
         product_caption: this.caption

@@ -7,16 +7,18 @@
         </div>
       </router-link>
       <h2 class="project_title">{{ project_info.project_name }}</h2>
+
+      <div class="project_caption" :class="{ close: isClose }">
+        <p>{{ project_info.project_caption }}</p>
+      </div>
+      <button class="caption_continue_btn" v-on:click="more()">{{ isClose ? "Read more" : "Close"}}</button>
+
       <div class="project_photos_grid">
         <div v-for="grid_item in project_info.project_image" class="grid_item" :key="grid_item.id">
           <img class="grid_image" :src="grid_item.project_image_path" alt="image">
         </div>
       </div>
       <button class="photo_continue_btn" href>Read more</button>
-      <div class="project_caption" :class="{ close: isClose }">
-        <p>{{ project_info.project_caption }}</p>
-      </div>
-      <button class="caption_continue_btn" v-on:click="more()">{{ isClose ? "Read more" : "Close"}}</button>
     </div>
     <div class="project_product">
       <div class="product_picture">
@@ -66,7 +68,7 @@
       <div class="buy_btn">
         <button>購入する</button>
       </div>
-      <a class="edit_btn" href>プロジェクトを編集</a>
+      <!-- <a class="edit_btn" href>プロジェクトを編集</a> -->
     </div>
   </div>
 </template>
@@ -184,6 +186,7 @@ export default {
   column-gap: 5px;
   row-gap: 5px;
   margin: 5px;
+  margin-top: 20px;
 }
 
 .grid_item {

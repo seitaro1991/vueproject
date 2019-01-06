@@ -20,7 +20,9 @@
         <a class="project_btn" href>
           <router-link to="/projectregister">プロジェクト作成</router-link>
         </a>
-        <a class="photo_btn" href>写真を投稿</a>
+        <a class="photo_btn" href>
+          <router-link to="/imageregister">写真を投稿</router-link>
+        </a>
         <a class="edit_btn" href>基本情報編集</a>
       </div>
     </div>

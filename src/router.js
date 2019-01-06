@@ -6,6 +6,7 @@ import Project from "./views/Project.vue";
 import BrandPage from "./views/BrandPage.vue";
 import ProjectRegister from "./views/ProjectRegister.vue";
 import ProductRegister from "./views/ProductRegister.vue";
+import ImageRegister from "./views/ImageRegister.vue";
 
 Vue.use(Router);
 
@@ -50,6 +51,11 @@ export default new Router({
       path: "/productregister",
       name: "productregister",
       component: ProductRegister
+    },
+    {
+      path: "/imageregister",
+      name: "imageregister",
+      component: ImageRegister
     },
     {
       path: "*",

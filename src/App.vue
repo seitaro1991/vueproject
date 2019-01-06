@@ -122,4 +122,9 @@ header {
   max-height: 100%;
   margin: 0 auto;
 } */
+
+button {
+  font-weight: bold;
+  font-size: 15px;
+}
 </style>
