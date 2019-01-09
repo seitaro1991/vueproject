@@ -33,12 +33,12 @@ export default new Router({
     //     import(/* webpackChunkName: "about" */ "./views/About.vue")
     // },
     {
-      path: "/project",
+      path: "/project/:id",
       name: "project",
       component: Project
     },
     {
-      path: "/brandpage",
+      path: "/brandpage/:id",
       name: "brandpage",
       component: BrandPage
     },

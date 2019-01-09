@@ -1,7 +1,7 @@
 <template>
-  <div class="project">
+  <div class="project" v-if="project_info">
     <div class="project_detail">
-      <router-link to="/brandpage">
+      <router-link :to="'/brandpage/'+ project_info.brand_id ">
         <div class="brand_icon">
           <img :src="project_info.brand_logo" alt="icon">
         </div>
@@ -18,7 +18,7 @@
           <img class="grid_image" :src="grid_item.project_image_path" alt="image">
         </div>
       </div>
-      <button class="photo_continue_btn" href>Read more</button>
+      <!-- <button class="photo_continue_btn" href>Read more</button> -->
     </div>
     <div class="project_product">
       <div class="product_picture">

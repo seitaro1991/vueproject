@@ -23,12 +23,8 @@
             <div class="cp_ipselect cp_sl01">
               <select required>
                 <option value hidden>選択</option>
-                <option
-                  value="1"
-                >cat最高の製品を作り、環境に与える不必要な悪影響を最小限に抑える。そして、ビジネスを手段として環境危機に警鐘を鳴らし、解決に向けて実行する。</option>
-                <option value="2">dog</option>
-                <option value="3">rabbit</option>
-                <option value="4">squirrel</option>
+                <option value="1">環境と人に優しいデニムをつくる。</option>
+                <option value="2">環境への負担が低い天然繊維ヘンプで最高の製品を…。</option>
               </select>
             </div>
           </div>

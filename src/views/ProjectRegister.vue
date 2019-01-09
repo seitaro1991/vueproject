@@ -17,7 +17,7 @@
               <label>プロジェクト詳細</label>
             </div>
             <div class="detail_write">
-              <textarea v-model="content" rows="20" placeholder="内容"></textarea>
+              <textarea v-model="caption" rows="20" placeholder="内容"></textarea>
             </div>
           </div>
           <div class="project_image">
@@ -31,7 +31,7 @@
               <label>画像キャプション入力</label>
             </div>-->
             <div class="detail_write">
-              <textarea v-model="caption" rows="5" placeholder="画像キャプションを書く"></textarea>
+              <textarea v-model="image_caption" rows="5" placeholder="画像キャプションを書く"></textarea>
             </div>
           </div>
 
@@ -59,8 +59,9 @@ export default {
   data() {
     return {
       title: "",
-      content: "",
-      uploadedImage: ""
+      caption: "",
+      uploadedImage: "",
+      image_caption: ""
     };
   },
   // (読み込み時に)実行するメソッド
@@ -68,7 +69,7 @@ export default {
     postArticle() {
       var article = {
         project_name: this.title,
-        project_caption: this.content
+        project_caption: this.caption
       };
       var id = 1;
       console.log(article);

@@ -1,5 +1,5 @@
 <template>
-  <div class="brand">
+  <div class="brand" v-if="brand_info">
     <div class="brand_head">
       <div class="brand_name">
         <h3>{{ brand_info.brand_official }}</h3>
@@ -23,13 +23,13 @@
         <a class="photo_btn" href>
           <router-link to="/imageregister">写真を投稿</router-link>
         </a>
-        <a class="edit_btn" href>基本情報編集</a>
+        <!-- <a class="edit_btn" href>基本情報編集</a> -->
       </div>
     </div>
     <div class="project_detail">
       <div class="grid">
         <router-link
-          to="/project"
+          :to="'/project/'+ grid_item.project_id "
           v-for="grid_item in brand_info.projects"
           class="grid_item"
           :key="grid_item.id"
@@ -182,7 +182,6 @@ export default {
 }
 
 .detail {
-  font-size: 1px;
   display: block;
   /* margin: 10px 0; */
   padding: 5px;

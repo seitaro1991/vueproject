@@ -8,23 +8,25 @@
     </div>-->
     <div class="grid">
       <router-link
-        to="/project"
         v-for="grid_item in project_feeds"
         class="grid_item"
-        :key="grid_item.id"
+        :to="'/project/'+ grid_item.project_id "
+        :key="grid_item.project_id"
         v-on:click="show($event)"
       >
-        <img class="image_area" :src="grid_item.project_image_path" alt="image">
-        <!-- <GridItem v-bind:title="grid_item.title" v-bind:thumbnail="grid_item.thumbnailUrl"></GridItem> -->
-        <!-- ↓GridItemに以下の内容が入っている -->
-        <div class="text_area">
-          <div class="detail">
-            <h3>{{ grid_item.project_name }}</h3>
-            <p>{{ grid_item.project_image_caption }}</p>
+        <div class="aaa">
+          <img class="image_area" :src="grid_item.project_image_path" alt="image">
+          <!-- <GridItem v-bind:title="grid_item.title" v-bind:thumbnail="grid_item.thumbnailUrl"></GridItem> -->
+          <!-- ↓GridItemに以下の内容が入っている -->
+          <div class="text_area">
+            <div class="detail">
+              <h3>{{ grid_item.project_name }}</h3>
+              <p>{{ grid_item.project_image_caption }}</p>
+            </div>
+            <router-link :to="'/brandpage/'+ grid_item.brand_id" class="brand_icon">
+              <img class="image_icon" v-bind:src="grid_item.brand_logo" alt="image_icon">
+            </router-link>
           </div>
-          <router-link to="/brandpage" class="brand_icon">
-            <img class="image_icon" v-bind:src="grid_item.brand_logo" alt="image_icon">
-          </router-link>
         </div>
       </router-link>
     </div>
@@ -72,6 +74,7 @@ export default {
   column-gap: 5px;
   row-gap: 5px;
   margin: 5px;
+  margin-bottom: 10px;
 }
 
 .grid_item {
@@ -124,6 +127,7 @@ export default {
   height: 40px;
   width: 40px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .imge_icon {
