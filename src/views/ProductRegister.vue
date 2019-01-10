@@ -40,10 +40,14 @@
             </div>
           </div>
 
+          <div class="product_image_area" v-for="image in imagePath">
+            <img :src="image" alt>
+          </div>
+
           <div class="product_image">
             <label>商品写真をアップロード</label>
             <img v-show="uploadedImage" :src="uploadedImage" accept="image/jpeg, image/png">
-            <input type="file" v-on:change="onFileChange">
+            <input type="file" v-on:change="onFileChange" v-on:click="appendEl">
           </div>
 
           <div class="product_detail">
@@ -82,7 +86,8 @@ export default {
       cost: "",
       size: "",
       caption: "",
-      uploadedImage: ""
+      uploadedImage: "",
+      imagePath: []
     };
   },
   // (読み込み時に)実行するメソッド
@@ -122,9 +127,14 @@ export default {
     createImage(file) {
       let reader = new FileReader();
       reader.onload = e => {
-        this.uploadedImage = e.target.result;
+        const path = e.target.result;
+        this.uploadedImage = path;
+        this.appendEl(path);
       };
       reader.readAsDataURL(file);
+    },
+    appendEl(image) {
+      this.imagePath.push(image);
     }
   }
 };
@@ -225,3 +235,4 @@ export default {
   background: rgb(201, 201, 201);
 }
 </style>
+

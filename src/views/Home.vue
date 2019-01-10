@@ -59,7 +59,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/project_feeds/index.json")
+      .get("https://winter-saito-1859.lolipop.io/api/project_feeds")
       .then(response => (this.project_feeds = response.data));
   }
 };
