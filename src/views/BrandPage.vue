@@ -30,7 +30,7 @@
       <div class="grid">
         <router-link
           :to="'/project/'+ grid_item.project_id "
-          v-for="grid_item in brand_info.projects"
+          v-for="grid_item in brand_info.projectimages"
           class="grid_item"
           :key="grid_item.id"
         >
@@ -56,7 +56,10 @@ export default {
   methods: {},
   mounted() {
     axios
-      .get("/api/brand_page/1.json")
+      .get(
+        "https://winter-saito-1859.lolipop.io/api/brand_page/" +
+          this.$route.params.id
+      )
       .then(response => (this.brand_info = response.data));
   }
 };
