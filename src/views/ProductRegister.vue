@@ -119,7 +119,7 @@ export default {
 
       // サーバー                  ↑ res
       //               | -------> |
-      //          (データ受信)     (で〜た返信)
+      //          (データ受信)     (で〜た返信
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
