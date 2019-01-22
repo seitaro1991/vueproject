@@ -40,14 +40,16 @@
             </div>
           </div>
 
-          <div class="product_image_area" v-for="image in imagePath">
-            <img :src="image" alt>
+          <div class="posted_column">
+            <div class="product_image_area" v-for="image in imagePath">
+              <img class="view_img" :src="image" alt v-on:change="appendEl">
+            </div>
           </div>
 
           <div class="product_image">
             <label>商品写真をアップロード</label>
-            <img v-show="uploadedImage" :src="uploadedImage" accept="image/jpeg, image/png">
-            <input type="file" v-on:change="onFileChange" v-on:click="appendEl">
+            <!-- <img v-show="uploadedImage" :src="uploadedImage" accept="image/jpeg, image/png"> -->
+            <input type="file" v-on:change="onFileChange">
           </div>
 
           <div class="product_detail">
@@ -218,6 +220,24 @@ export default {
   border-radius: 5px;
   padding: 5px;
   display: block;
+}
+
+.product_image_area {
+  font-weight: bold;
+  border: 2px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+  padding: 5px 0;
+  cursor: pointer;
+  color: #333;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.view_img {
+  width: 80%;
 }
 
 .create_btn {

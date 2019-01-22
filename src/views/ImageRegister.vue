@@ -22,9 +22,12 @@
             </div>
             <div class="cp_ipselect cp_sl01">
               <select required>
-                <option value hidden>選択</option>
-                <option value="1">環境と人に優しいデニムをつくる。</option>
-                <option value="2">環境への負担が低い天然繊維ヘンプで最高の製品を…。</option>
+                <!-- <option value hidden>選択</option> -->
+                <option
+                  v-for="project in project_feeds"
+                  :key="project.id"
+                  :value="project.project_id"
+                >{{ project.project_name }}</option>
               </select>
             </div>
           </div>
@@ -53,7 +56,8 @@ export default {
   data() {
     return {
       caption: "",
-      uploadedImage: ""
+      uploadedImage: "",
+      project_feeds: null
     };
   },
   // (読み込み時に)実行するメソッド
@@ -84,7 +88,34 @@ export default {
         this.uploadedImage = e.target.result;
       };
       reader.readAsDataURL(file);
+    },
+    groupByProjectId(baseItems) {
+      // もとの配列をソート
+      return (
+        baseItems
+          .sort((a, b) => a.project_id - b.project_id)
+          // もとの配列をフィルタリング(リデュース)
+          .reduce((acc, cur, index) => {
+            if (index == 0) {
+              return [cur];
+            } else {
+              // もしもプロジェクトIdが前回と違えば、使用。同じであれば除去
+              if (acc[acc.length - 1].project_id != cur.project_id) {
+                return [...acc, cur];
+              } else {
+                return [...acc];
+              }
+            }
+          }, [])
+      );
     }
+  },
+  mounted() {
+    axios
+      .get("https://winter-saito-1859.lolipop.io/api/project_feeds")
+      .then(response => {
+        this.project_feeds = this.groupByProjectId(response.data);
+      });
   }
 };
 </script>
