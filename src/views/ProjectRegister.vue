@@ -122,7 +122,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 16px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -140,7 +140,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 16px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -158,7 +158,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 16px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -182,7 +182,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 16px;
   display: block;
   padding: 5px 0;
   cursor: pointer;
