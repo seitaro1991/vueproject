@@ -60,7 +60,12 @@ export default {
   mounted() {
     axios
       .get("https://winter-saito-1859.lolipop.io/api/project_feeds")
-      .then(response => (this.project_feeds = response.data));
+      .then(response => {
+        this.project_feeds = response.data;
+        // this.project_feeds = response.data.sort(
+        //   (a, b) => b.project_image_id - a.project_image_id
+        // );
+      });
   }
 };
 </script>

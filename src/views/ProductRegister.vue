@@ -138,6 +138,11 @@ export default {
     appendEl(image) {
       this.imagePath.push(image);
     }
+  },
+  mounted() {
+    axios
+      .post("" + this.$route.params.id)
+      .then(response => (this.brand_info = response.data));
   }
 };
 </script>
@@ -152,10 +157,6 @@ export default {
   width: 96%;
   margin: 0 auto;
   font-size: 18px;
-}
-
-.product_title {
-  margin: 20px 0;
 }
 
 .posted_column {

@@ -90,6 +90,14 @@ export default {
       };
       reader.readAsDataURL(file);
     }
+  },
+  mounted() {
+    axios
+      .post(
+        "https://winter-saito-1859.lolipop.io/api/project" +
+          this.$route.params.id
+      )
+      .then(response => (this.brand_info = response.data));
   }
 };
 </script>

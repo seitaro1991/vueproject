@@ -7,6 +7,8 @@ import BrandPage from "./views/BrandPage.vue";
 import ProjectRegister from "./views/ProjectRegister.vue";
 import ProductRegister from "./views/ProductRegister.vue";
 import ImageRegister from "./views/ImageRegister.vue";
+import Payment from "./views/Payment.vue";
+import Thankyou from "./views/Thankyou.vue";
 
 Vue.use(Router);
 
@@ -43,19 +45,29 @@ export default new Router({
       component: BrandPage
     },
     {
-      path: "/projectregister",
+      path: "/projectregister/:id",
       name: "projectregister",
       component: ProjectRegister
     },
     {
-      path: "/productregister",
+      path: "/productregister/:id",
       name: "productregister",
       component: ProductRegister
     },
     {
-      path: "/imageregister",
+      path: "/imageregister/:id",
       name: "imageregister",
       component: ImageRegister
+    },
+    {
+      path: "/payment",
+      name: "payment",
+      component: Payment
+    },
+    {
+      path: "/thankyou",
+      name: "thankyou",
+      component: Thankyou
     },
     {
       path: "*",

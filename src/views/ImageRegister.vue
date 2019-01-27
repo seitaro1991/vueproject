@@ -16,15 +16,15 @@
             </div>
           </div>
 
-          <div class="posted_column">
+          <div class="posted_colum">
             <div class="label">
               <label>プロジェクトを選択</label>
             </div>
             <div class="cp_ipselect cp_sl01">
-              <select required>
+              <select required v-model="projectId">
                 <!-- <option value hidden>選択</option> -->
                 <option
-                  v-for="project in project_feeds"
+                  v-for="project in project"
                   :key="project.id"
                   :value="project.project_id"
                 >{{ project.project_name }}</option>
@@ -36,7 +36,8 @@
           <p>{{ content }}</p>-->
           <div class="create_btn">
             <button type="submit">
-              <router-link to="/brandpage">画像を投稿</router-link>
+              <!-- <router-link to="/brandpage">画像を投稿</router-link> -->
+              <p>画像を投稿</p>
             </button>
           </div>
         </form>
@@ -57,29 +58,37 @@ export default {
     return {
       caption: "",
       uploadedImage: "",
-      project_feeds: null
+      project: null,
+      uploadFile: "",
+      tempImageId: null,
+      projectId: ""
     };
   },
   // (読み込み時に)実行するメソッド
   methods: {
     postArticle() {
       var article = {
-        product_caption: this.caption
+        temp_image_id: this.tempImageId,
+        project_image_caption: this.caption,
+        project_id: this.projectId
       };
-      var id = 1;
-      console.log(article);
-      //   axios
-      //     .post("/api/image_upload")
-      //     .then(res => {
-      //       // 遷移する処理
-      //       console.log(res.data.title);
 
-      //     })
-      //     .catch(err => {});
+      console.log(article);
+      axios
+        .post("https://winter-saito-1859.lolipop.io/api/project/image", article)
+        .then(response => {
+          this.$router.push({ name: "home" });
+          // ここにルーティング処理をかく
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       this.createImage(files[0]);
+      this.uploadFile = files[0];
+      this.submitImage();
     },
     // アップロードした画像を表示
     createImage(file) {
@@ -93,29 +102,52 @@ export default {
       // もとの配列をソート
       return (
         baseItems
-          .sort((a, b) => a.project_id - b.project_id)
+          // .sort((a, b) => a.project_id - b.project_id) 並びは担保されてるので省略
           // もとの配列をフィルタリング(リデュース)
           .reduce((acc, cur, index) => {
             if (index == 0) {
               return [cur];
             } else {
               // もしもプロジェクトIdが前回と違えば、使用。同じであれば除去
-              if (acc[acc.length - 1].project_id != cur.project_id) {
-                return [...acc, cur];
-              } else {
-                return [...acc];
-              }
+              return acc[acc.length - 1].project_id != cur.project_id
+                ? [...acc, cur]
+                : [...acc];
             }
           }, [])
       );
+    },
+    submitImage() {
+      var formData = new FormData();
+      console.log("submitImage");
+      formData.append("images", this.uploadFile);
+      var config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      };
+      axios
+        .post(
+          "https://winter-saito-1859.lolipop.io/api/image_upload",
+          formData,
+          config
+        )
+        .then(response => {
+          this.tempImageId = response.data.temp_image_id;
+          console.log("画像イメージアップロード完了");
+          // response 処理
+        })
+        .catch(function(error) {
+          // error 処理
+        });
     }
   },
   mounted() {
     axios
-      .get("https://winter-saito-1859.lolipop.io/api/project_feeds")
-      .then(response => {
-        this.project_feeds = this.groupByProjectId(response.data);
-      });
+      .get(
+        "https://winter-saito-1859.lolipop.io/api/project/" +
+          this.$route.params.id
+      )
+      .then(response => (this.project = response.data));
   }
 };
 </script>
@@ -136,7 +168,7 @@ export default {
   margin: 20px 0;
 }
 
-.posted_column {
+.posted_colum {
   margin-top: 20px;
 }
 

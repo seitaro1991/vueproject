@@ -17,12 +17,12 @@
         <p>{{ brand_info.brand_caption }}</p>
       </div>
       <div class="btn_area">
-        <a class="project_btn" href>
-          <router-link to="/projectregister">プロジェクト作成</router-link>
-        </a>
-        <a class="photo_btn" href>
-          <router-link to="/imageregister">写真を投稿</router-link>
-        </a>
+        <span class="project_btn">
+          <router-link :to="'/projectregister/'+ brand_info.brand_id">プロジェクト作成</router-link>
+        </span>
+        <span class="photo_btn">
+          <router-link :to="'/imageregister/'+ this.$route.params.id">写真を投稿</router-link>
+        </span>
         <!-- <a class="edit_btn" href>基本情報編集</a> -->
       </div>
     </div>
