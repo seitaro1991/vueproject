@@ -18,7 +18,7 @@
       </div>
       <div class="btn_area">
         <span class="project_btn">
-          <router-link :to="'/projectregister/'+ brand_info.brand_id">プロジェクト作成</router-link>
+          <router-link :to="'/projectregister/'+ this.$route.params.id">プロジェクト作成</router-link>
         </span>
         <span class="photo_btn">
           <router-link :to="'/imageregister/'+ this.$route.params.id">写真を投稿</router-link>

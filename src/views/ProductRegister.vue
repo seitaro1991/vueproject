@@ -167,7 +167,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -185,7 +185,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -193,6 +193,8 @@ export default {
   color: #333;
   width: 95%;
   margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .product_image {
@@ -203,7 +205,7 @@ export default {
   font-weight: bold;
   /* border: 2px solid rgb(201, 201, 201); */
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -227,7 +229,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -245,7 +247,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   padding: 5px 0;
   cursor: pointer;

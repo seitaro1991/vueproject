@@ -17,7 +17,7 @@
               <label>プロジェクト詳細</label>
             </div>
             <div class="detail_write">
-              <textarea v-model="caption" rows="20" placeholder="内容"></textarea>
+              <textarea v-model="caption" rows="10" placeholder="内容"></textarea>
             </div>
           </div>
           <div class="project_image">
@@ -39,7 +39,7 @@
           <p>{{ content }}</p>-->
           <div class="create_btn">
             <button type="submit">
-              <router-link to="/productregister">プロジェクト作成</router-link>
+              <span>プロジェクト作成</span>
             </button>
           </div>
         </form>
@@ -61,7 +61,9 @@ export default {
       title: "",
       caption: "",
       uploadedImage: "",
-      image_caption: ""
+      image_caption: "",
+      tempImageId: null,
+      uploadFile: ""
     };
   },
   // (読み込み時に)実行するメソッド
@@ -69,18 +71,36 @@ export default {
     postArticle() {
       var article = {
         project_name: this.title,
-        project_caption: this.caption
+        project_caption: this.caption,
+        project_brand_id: this.$route.params.id,
+        project_image: [
+          {
+            temp_image_id: this.tempImageId,
+            project_image_caption: this.image_caption
+          }
+        ]
       };
-      var id = 1;
+
       console.log(article);
-      // axios.post("/api/project" ,article).then(res => {
-      //   console.log(res.data.title);
-      //   console.log(res.data.content);
-      // });
+      this.$router.push({ name: "productregister", params: 15 });
+
+      // Axios でプロジェクト作成のAPIへポストする
+      // axios
+      //   .post("https://winter-saito-1859.lolipop.io/api/project", article)
+      //   .then(response => {
+      //     // ↑が成功したら、レスポンスの中にあるProjectIdが帰ってくるので、ProjectIdを使用して、Product登録ページにリンク
+      //     const projectId = response.data.project_id;
+      //     console.log("プロジェクト登録成功");
+      //     console.log(projectId);
+      //     this.$router.push({ name: "productregister", params: { projectId } });
+      //   })
+      //   .catch(err => console.log(err));
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       this.createImage(files[0]);
+      this.uploadFile = files[0];
+      this.submitImage();
     },
     // アップロードした画像を表示
     createImage(file) {
@@ -89,16 +109,34 @@ export default {
         this.uploadedImage = e.target.result;
       };
       reader.readAsDataURL(file);
+    },
+    submitImage() {
+      var formData = new FormData();
+      console.log("submitImage");
+      formData.append("images", this.uploadFile);
+      var config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      };
+      axios
+        .post(
+          "https://winter-saito-1859.lolipop.io/api/image_upload",
+          formData,
+          config
+        )
+        .then(response => {
+          this.tempImageId = response.data.temp_image_id;
+          console.log("画像イメージアップロード完了");
+          // response 処理
+          console.log(this.tempImageId);
+        })
+        .catch(function(error) {
+          // error 処理
+        });
     }
   },
-  mounted() {
-    axios
-      .post(
-        "https://winter-saito-1859.lolipop.io/api/project" +
-          this.$route.params.id
-      )
-      .then(response => (this.brand_info = response.data));
-  }
+  mounted() {}
 };
 </script>
 
@@ -122,10 +160,11 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
-  padding: 5px 0;
+  padding: 5px 10px;
+  box-sizing: border-box;
   cursor: pointer;
   color: #333;
   width: 95%;
@@ -140,7 +179,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -148,6 +187,8 @@ export default {
   color: #333;
   width: 95%;
   margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .project_image {
@@ -158,7 +199,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   margin-top: 5px;
   padding: 5px 0;
@@ -182,7 +223,7 @@ export default {
   font-weight: bold;
   border: 2px solid rgb(201, 201, 201);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   padding: 5px 0;
   cursor: pointer;

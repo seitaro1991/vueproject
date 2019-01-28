@@ -125,6 +125,14 @@ header {
 
 button {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 18px;
+}
+
+form {
+  font-size: 17px;
+}
+
+option {
+  font-size: 17px;
 }
 </style>
