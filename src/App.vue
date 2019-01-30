@@ -135,4 +135,8 @@ form {
 option {
   font-size: 17px;
 }
+
+select {
+  font-size: 17px;
+}
 </style>
